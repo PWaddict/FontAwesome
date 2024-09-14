@@ -1,0 +1,40 @@
+<?php namespace ProcessWire;
+
+/**
+ * Font Awesome Module
+ * ProcessWire 3.x, Copyright 2024 by Ryan Cramer
+ * https://processwire.com
+ *
+ */
+
+class FontAwesome extends ModuleJS {
+
+	public static function getModuleInfo() {
+		return array(
+			'title' => 'Font Awesome',
+			'version' => 100,
+			'summary' => 'Upgrade ProcessWire\'s backend with the latest Font Awesome free icons (solid + brands).',
+			'autoload' => 'template=admin',
+			'author' => 'PWaddict',
+			'icon' => 'font-awesome'
+		  );
+	}
+
+	public function ready() {
+		$this->addHookAfter('AdminTheme::getExtraMarkup', $this, 'loadCSS');
+	}
+
+	public function loadCSS(HookEvent $event) {
+
+		$name = $this->className();
+		$info = $this->getModuleInfo();
+		$version = (int) $info['version'];
+
+		$parts = $event->return;
+		$css = $this->config->urls->$name . 'fontawesome/css/all.min.css?v=' . $version;
+		$parts['head'] .= "\n<link type='text/css' href='{$css}' rel='stylesheet'/>\n";
+		$event->return = $parts;
+
+	}
+
+}

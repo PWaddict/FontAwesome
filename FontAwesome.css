@@ -1,0 +1,13 @@
+/* Font weight for solid icons */
+.ui-priority-secondary.fa,
+.ui-widget-content .ui-priority-secondary.fa,
+.ui-widget-header .ui-priority-secondary.fa {
+    font-weight: 900;
+}
+
+/* Font weight for brand icons */
+.ui-priority-secondary.fa.fab,
+.ui-widget-content .ui-priority-secondary.fa.fab,
+.ui-widget-header .ui-priority-secondary.fa.fab {
+    font-weight: 400;
+}
